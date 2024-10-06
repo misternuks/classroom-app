@@ -1,8 +1,7 @@
-// src/components/AdminView.js
-
 import React, { useEffect, useState } from 'react';
 import socket from '../socket'; // Import the socket instance
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import styles from './AdminView.module.css';
 
 function AdminView() {
   const [groups, setGroups] = useState({});
@@ -62,25 +61,22 @@ function AdminView() {
   };
 
   return (
-    <div>
-      <h2>Admin View</h2>
-      <p>Class Code: {classCode}</p>
-      <button onClick={handleShuffleAll}>Shuffle All</button>
-      <button onClick={handleEndSession}>End Session</button>
+    <div className={styles.background}>
+      <div className={styles.card}>
+        <h2>Admin View</h2>
+        <p>Class Code: <strong>{classCode}</strong></p>
+        <button onClick={handleShuffleAll}>Shuffle All</button>
+        <button onClick={handleEndSession}>End Session</button>
+      </div>
       <DragDropContext onDragEnd={onDragEnd}>
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div className={styles.tilecontainer}>
           {Object.keys(groups).map((groupNumber) => (
             <Droppable droppableId={groupNumber} key={groupNumber}>
               {(provided) => (
                 <div
                   ref={provided.innerRef}
                   {...provided.droppableProps}
-                  style={{
-                    border: '1px solid black',
-                    margin: '10px',
-                    padding: '10px',
-                    width: '200px',
-                  }}
+                  className={styles.tile}
                 >
                   <h3>Group {groupNumber}</h3>
                   {groups[groupNumber].map((student, index) => (
@@ -90,12 +86,8 @@ function AdminView() {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          style={{
-                            padding: '5px',
-                            margin: '5px',
-                            backgroundColor: 'lightgray',
-                            ...provided.draggableProps.style,
-                          }}
+                          className={styles.tilestudent}
+
                         >
                           {student.name}
                         </div>

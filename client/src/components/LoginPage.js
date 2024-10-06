@@ -1,8 +1,7 @@
-// src/components/LoginPage.js
-import styles from './LoginPage.module.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import socket from '../socket'; // Import the socket instance
+import styles from './LoginPage.module.css';
 
 function LoginPage() {
   const [studentID, setStudentID] = useState('');
