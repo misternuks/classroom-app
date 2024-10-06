@@ -1,5 +1,5 @@
 // src/components/LoginPage.js
-
+import styles from './LoginPage.module.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import socket from '../socket'; // Import the socket instance
@@ -53,44 +53,47 @@ function LoginPage() {
   };
 
   return (
-    <div>
-      <h2>Student Login</h2>
-      <form onSubmit={handleStudentLogin}>
-        <input
-          type="text"
-          placeholder="Student ID"
-          value={studentID}
-          onChange={(e) => setStudentID(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Class Code"
-          value={classCode}
-          onChange={(e) => setClassCode(e.target.value)}
-          required
-        />
-        <button type="submit">Login as Student</button>
-      </form>
+    <div className={styles.background}>
+      <h1>Digital Production Groups</h1>
+      <div className={styles.card}>
+        <h2>Student Login</h2>
+        <form onSubmit={handleStudentLogin} className={styles.form}>
+          <input
+            type="text"
+            placeholder="Student ID"
+            value={studentID}
+            onChange={(e) => setStudentID(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Class Code"
+            value={classCode}
+            onChange={(e) => setClassCode(e.target.value)}
+            required
+          />
+          <button type="submit">Login as Student</button>
+        </form>
 
-      <h2>Admin Login</h2>
-      <form onSubmit={handleAdminLogin}>
-        <input
-          type="email"
-          placeholder="Admin Email"
-          value={adminEmail}
-          onChange={(e) => setAdminEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={adminPassword}
-          onChange={(e) => setAdminPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login as Admin</button>
-      </form>
+        <h2>Admin Login</h2>
+        <form onSubmit={handleAdminLogin} className={styles.form}>
+          <input
+            type="email"
+            placeholder="Admin Email"
+            value={adminEmail}
+            onChange={(e) => setAdminEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={adminPassword}
+            onChange={(e) => setAdminPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Login as Admin</button>
+        </form>
+      </div>
     </div>
   );
 }
