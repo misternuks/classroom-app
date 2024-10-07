@@ -38,6 +38,7 @@ button {
   color:rgb(130, 155, 190);
   transition: all 0.2s;
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 
 }
 
@@ -62,7 +63,6 @@ button:active {
   background-color: rgb(245, 245, 245);
   padding: 8px;
   color:rgb(130, 155, 190);
-  transition: all 0.2s;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -71,4 +71,7 @@ button:active {
   padding: 2px;
   border-radius: 4px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 4px;
+  font-size: 12px;
+  cursor: grab;
 }

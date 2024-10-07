@@ -1,7 +1,6 @@
-// src/components/StudentView.js
-
 import React, { useEffect, useState } from 'react';
 import socket from '../socket'; // Import the socket instance
+import styles from './StudentView.module.css';
 
 function StudentView() {
   const [groups, setGroups] = useState({});
@@ -31,17 +30,17 @@ function StudentView() {
   };
 
   return (
-    <div>
+    <div className={styles.background}>
       <h2>Welcome, {studentInfo ? studentInfo.name : 'Student'}</h2>
       <button onClick={handleLogout}>Log Out</button>
-      <div>
+      <div className={styles.tilecontainer}>
         {/* Render the groups in the classroom layout */}
         {Object.keys(groups).map((groupNumber) => (
-          <div key={groupNumber} style={{ border: '1px solid black', margin: '10px', padding: '10px' }}>
+          <div key={groupNumber} className={styles.tile}>
             <h3>Group {groupNumber}</h3>
             <ul>
               {groups[groupNumber].map((student) => (
-                <li key={student.studentID}>{student.name}</li>
+                <li className={styles.tilestudent} key={student.studentID}>{student.name}</li>
               ))}
             </ul>
           </div>
